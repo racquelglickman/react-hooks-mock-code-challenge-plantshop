@@ -30,18 +30,39 @@ function PlantPage() {
       .then((res) => res.json())
       .then(() => {
         console.log('successfully deleted');
-      })
 
-    setPlantArray(plantArray.filter((plant) => {
-        return plant.id !== deletedId;
-      }));
-  }
+        setPlantArray(plantArray.filter((plant) => {
+          return plant.id !== deletedId;
+        }));
+      })
+  };
+
+  function onEditPrice(editedPrice, editedId) {
+    
+    fetch(`http://localhost:6001/plants/${editedId}`,{
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({price: parseFloat(editedPrice)})
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPlantArray(plantArray.map((plant) => {
+          if (plant.id === editedId) {
+            return data;
+          } else {
+            return plant;
+          }
+        }));
+      });
+  };
 
   return (
     <main>
       <NewPlantForm onAddPlant={onAddPlant}/>
       <Search search={search} setSearch={setSearch}/>
-      <PlantList plants={plantArray} search={search} onDeletePlant={onDeletePlant}/>
+      <PlantList plants={plantArray} search={search} onDeletePlant={onDeletePlant} onEditPrice={onEditPrice}/>
     </main>
   );
 }

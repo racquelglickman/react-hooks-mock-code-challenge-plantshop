@@ -10,19 +10,19 @@
       "id": 2,
       "name": "ZZ Plant",
       "image": "./images/zz-plant.jpg",
-      "price": 25.98
+      "price": 24.99
     },
     {
       "id": 3,
       "name": "Pilea peperomioides",
       "image": "./images/pilea.jpg",
-      "price": 5.99
+      "price": 6.99
     },
     {
       "id": 4,
       "name": "Pothos",
       "image": "./images/pothos.jpg",
-      "price": 12.11
+      "price": 12
     },
     {
       "id": 5,
@@ -40,7 +40,7 @@
       "id": 7,
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
-      "price": 55
+      "price": 55.01
     },
     {
       "name": "Potted Succulents",
@@ -53,6 +53,12 @@
       "image": "https://cb2.scene7.com/is/image/CB2/PottedScclntsGryPot4p25inSHF19/$web_pdp_main_carousel_xs$/190508113949/potted-faux-succulents-4.25.jpg",
       "price": 29.95,
       "id": 10
+    },
+    {
+      "name": "Snake Plant",
+      "image": "https://h2.commercev3.net/cdn.brecks.com/images/800/76621A.jpg",
+      "price": 21.99,
+      "id": 11
     }
   ]
 }
