@@ -58,11 +58,31 @@ function PlantPage() {
       });
   };
 
+  function onEditName(editedName, editedId) {
+    fetch(`http://localhost:6001/plants/${editedId}`,{
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({ name: editedName })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPlantArray(plantArray.map((plant) => {
+          if (plant.id === editedId) {
+            return data;
+          } else {
+            return plant;
+          }
+        }));
+      });
+  }
+
   return (
     <main>
       <NewPlantForm onAddPlant={onAddPlant}/>
       <Search search={search} setSearch={setSearch}/>
-      <PlantList plants={plantArray} search={search} onDeletePlant={onDeletePlant} onEditPrice={onEditPrice}/>
+      <PlantList plants={plantArray} search={search} onDeletePlant={onDeletePlant} onEditPrice={onEditPrice} onEditName={onEditName}/>
     </main>
   );
 }

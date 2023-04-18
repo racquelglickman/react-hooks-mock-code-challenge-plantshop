@@ -1,7 +1,7 @@
 import React from "react";
 import PlantCard from "./PlantCard";
 
-function PlantList({ plants, search, onDeletePlant, onEditPrice }) {
+function PlantList({ plants, search, onDeletePlant, onEditPrice, onEditName }) {
 
   const plantsToDisplay = plants.filter((plant) => {
     if (search === '') return true;
@@ -9,7 +9,7 @@ function PlantList({ plants, search, onDeletePlant, onEditPrice }) {
   })
 
   const plantCards = plantsToDisplay.map((plant) => {
-    return <PlantCard key={plant.name} plant={plant} onDeletePlant={onDeletePlant} onEditPrice={onEditPrice}/>
+    return <PlantCard key={plant.name} plant={plant} onDeletePlant={onDeletePlant} onEditPrice={onEditPrice} onEditName={onEditName}/>
   });
 
   return (

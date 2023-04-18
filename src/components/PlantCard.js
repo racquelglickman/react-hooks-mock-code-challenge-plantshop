@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-function PlantCard({ plant, onDeletePlant, onEditPrice }) {
+function PlantCard({ plant, onDeletePlant, onEditPrice, onEditName }) {
 
   const [inStock, setInStock] = useState(true);
-  const [edit, setEdit] = useState(false);
-  const [editValue, setEditValue] = useState(plant.price);
+  const [editPrice, setEditPrice] = useState(false);
+  const [editPriceValue, setEditPriceValue] = useState(plant.price);
+  const [editName, setEditName] = useState(false);
+  const [editNameValue, setEditNameValue] = useState(plant.name);
 
   function handleClick() {
     setInStock(!inStock);
@@ -14,23 +16,35 @@ function PlantCard({ plant, onDeletePlant, onEditPrice }) {
     onDeletePlant(plant.id);
   };
 
-  function handleEdit(e) {
+  function handleEditPrice(e) {
     e.preventDefault();
-    onEditPrice(editValue, plant.id);
-    setEdit(!edit);
+    onEditPrice(editPriceValue, plant.id);
+    setEditPrice(!editPrice);
   };
+
+  function handleEditName(e) {
+    e.preventDefault();
+    onEditName(editNameValue, plant.id);
+    setEditName(!editName);
+  }
 
 
   return (
     <li className="card">
-      <img src={plant.image} alt={"plant name"} />
-      <h4>{plant.name}</h4>
-      {edit ? 
-        <form onSubmit={handleEdit}>
-          <p onClick={() => {setEdit(!edit)}}>Price: </p>
-          <input type='number' step="0.01" placeholder='Edit Price' value={editValue} onChange={(e) => {setEditValue(e.target.value)}}></input>
+      <img src={plant.image} alt={plant.name} />
+      
+      {editName ? 
+        <form onSubmit={handleEditName}>
+          <input style={{fontSize: '1em', padding: '0rem'}} type='text' placeholder='Edit Name' value={editNameValue} onChange={(e) => {setEditNameValue(e.target.value)}}></input>
         </form> : 
-        <p onClick={() => {setEdit(!edit)}}>Price: {plant.price}</p>}
+        <h4 onClick={() => {setEditName(!editName)}}>{plant.name}</h4>}
+      {editPrice ? 
+        <form onSubmit={handleEditPrice}>
+          <span onClick={() => {setEditPrice(!editPrice)}} >Price: </span>
+          <input style={{width: '100px', fontSize: '1em', padding: '0rem'}} type='number' step="0.01" placeholder='Edit Price' value={editPriceValue} onChange={(e) => {setEditPriceValue(e.target.value)}}></input>
+        </form> : 
+        <p onClick={() => {setEditPrice(!editPrice)}}>Price: {plant.price}</p>
+      }
       {inStock ? (
         <button className="primary" onClick={handleClick}>In Stock</button>
       ) : (
