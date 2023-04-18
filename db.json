@@ -41,6 +41,18 @@
       "name": "Fiddle Leaf Fig",
       "image": "./images/fiddle-leaf-fig.jpg",
       "price": 55
+    },
+    {
+      "name": "Potted Succulents",
+      "image": "https://cb.scene7.com/is/image/Crate/PottedSucculentsS4SHS19/$web_pdp_main_carousel_zoom_med$/190411135345/potted-succulents-s-4.jpg",
+      "price": 39.95,
+      "id": 8
+    },
+    {
+      "name": "Potted Faux Succulent",
+      "image": "https://cb2.scene7.com/is/image/CB2/PottedScclntsGryPot4p25inSHF19/$web_pdp_main_carousel_xs$/190508113949/potted-faux-succulents-4.25.jpg",
+      "price": 29.95,
+      "id": 10
     }
   ]
 }
